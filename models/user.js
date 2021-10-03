@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         set (value) {
-          this.setDataValue(bcrypt.hashSync(value, 10));
+          this.setDataValue('passwordHash', bcrypt.hashSync(value, 10));
         },
       },
       gender: {
@@ -50,9 +50,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       birthday: {
         type: DataTypes.DATEONLY,
-        validate: {
-          isBefore: new Date(),
-        },
+        // validate: {
+        //   isBefore: new Date(),
+        // },
       },
     },
     {
